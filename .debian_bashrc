@@ -1,0 +1,25 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+PS1='\[\033[1;34m\]┌─[\[\033[1;32m\]\u\[\033[1;34m\]@\[\033[1;32m\]\h\[\033[1;34m\]]─[\[\033[1;35m\]\w\[\033[1;34m\]]─[\[\033[1;36m\]\t\[\033[1;34m\]]$(if git branch &>/dev/null; then echo>
+
+figlet -f Bloody $(whoami) | lolcat -a -s 100
+
+current_hour=$(date +%H)
+
+if [ "$current_hour" -ge 5 ] && [ "$current_hour" -lt 12 ]; then
+    greeting="\033[1;33mGood morning\033[0m"
+elif [ "$current_hour" -ge 12 ] && [ "$current_hour" -lt 18 ]; then
+    greeting="\033[1;36mGood afternoon\033[0m"
+else
+    greeting="\033[1;35mGood evening\033[0m"
+fi
+
+echo -e "$greeting, \033[1;32m$(whoami)\033[0m!"
+echo -e "\033[0;37m$(date '+%d/%m/%Y %H:%M:%S')\033[0m\n"
